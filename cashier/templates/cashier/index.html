@@ -1,0 +1,105 @@
+{% extends "coworkinghome.html" %}
+{% block cohome %}
+<style>
+.checkin{
+    background-color:#17a2b8;
+    height: 40vh;
+}
+.checkout{
+    background-color:#db8640;
+    height: 40vh;
+}
+#memidin{
+    background-color:#fff;
+    height: 7vh;
+    margin: auto;
+    width: 70%;
+    margin-top: 15px;
+}
+#zone{
+    background-color:#fff;
+    height: 7vh;
+    margin: auto;
+    width: 70%;
+    margin-top: 15px;
+}
+#memidout{
+    background-color:#fff;
+    height: 7vh;
+    margin: auto;
+    width: 70%;
+    margin-top: 15px;
+}
+#monleft{
+    background-color:#fff;
+    height: 7vh;
+    margin: auto;
+    width: 70%;
+    margin-top: 15px;
+}
+</style>
+    <div class="row checkin">
+        <div class="col">
+            <br><h3>Check-In</h3>
+            <input type="text" class="form-control ml-3" id="memidin" 
+                            name="memidin" value="{{member_s.id}}" placeholder='memidin'><br>
+
+            <input type="radio" id="age1" name="zone" value="20">
+            <label for="age1">green</label>
+            <input type="radio" id="age2" name="zone" value="60">
+            <label for="age2">gold</label>  
+            <input type="radio" id="age3" name="zone" value="100">
+            <label for="age3">private</label><br><br>
+            <br><button type="submit" name="50" class="btn btn-primary ml-3" >check in</button>
+        </div>
+    </div>
+
+    <div class="row checkout">
+        <div class="col">
+            <br><h3>Check-Out</h3>
+            <input type="text" class="form-control ml-3" id="memidout" 
+                            name="memidout" value="{{memidout}}" placeholder='memidout'>
+            <input type="text" class="form-control ml-3" id="monleft" 
+                            name="monleft" value="{{monleft}}" placeholder='monleft'>
+            <br><button type="submit" name="50" class="btn btn-primary ml-3">check out</button>
+        </div> 
+    </div>
+{% endblock %}
+{% block cohome2 %}
+<form method="POST" action="{% url 'cashier1' %}">
+            {% csrf_token %} 
+                <div class="row serch">
+                    <div class="col">
+                        <br><h3>search</h3>
+                    </div>
+                </div>
+
+                <div class="row memid">
+                    <div class="col-sm-8"><br>
+                        <input type="text" id="member_s" name="member_s" placeholder='member id' value="{{member_s.id}}"><br>
+                    </div>
+                    <div class="col-sm-4"><br><h3><button type="submit" class="btn btn-primary ml-3">search</button></h3></div>
+                </div>
+
+                <div class="row money_input">
+                    <div class="col">
+                        <label for="search_money"></label>
+                        <input type="text" class="form-control ml-3" id="search_money" 
+                            name="search_money" value="{{search_money}}" placeholder='search_money'>
+                    </div>
+                </div>
+
+                <div class="row logs">
+                    <div class="col">
+                    <form>
+                    <input type="text" class="form-control ml-3" id="log"
+                            name="log" value="{{num_money}}" placeholder='log'>
+                    </form>
+                        {% comment %} <br><div id="log" name="log">log</div><br> {% endcomment %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

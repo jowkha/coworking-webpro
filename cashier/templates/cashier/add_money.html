@@ -1,0 +1,111 @@
+{% extends "coworkinghome.html" %}
+{% block cohome %}
+<style>
+.admon{
+    height: 10vh;
+}
+.add_memid{
+    height: 10vh;
+    margin: auto;
+    width: 90%;
+    margin-top: 15px;
+}
+.moninput{
+    height: 10vh;
+    margin: auto;
+    width: 90%;
+    margin-top: 15px;
+}
+.addmon{
+    background-color:#fff;
+    height: 25vh;
+    margin: auto;
+    margin-top: 15px;
+    width: 90%;
+}
+#log{
+    background-color:#fff;
+    height: 40vh;
+    margin: auto;
+    margin-top: 15px;
+    width: 90%;
+}
+
+</style>
+    <div class="row admon">
+        <div class="col">
+            <br><h3>Add Money</h3>
+        </div>
+    </div>
+    <form method="POST" name="add" action="{% url 'add_money' %}">
+        {% csrf_token %}
+    <div class="row add_memid">
+        <div class="col">
+            <label for="memberid"></label>
+            <input type="text" class="form-control ml-3" id="memberid" 
+                name="memberid" value="{{add_memberid.id}}" placeholder='member_id'>
+        </div>
+    </div>
+    
+    <div class="row moninput">
+        <div class="col">
+            <label for="num_money"></label>
+            <input type="text" class="form-control ml-3" id="num_money" 
+                name="num_money" value="{{search_money_ad}}" placeholder='money'>
+        </div>
+    </div>
+    
+    <div class="row addmon">
+        <div class="col">
+            <br><br><input type="radio" id="age1" name="num" value="20">
+            <label for="age1">20</label>
+            <input type="radio" id="age2" name="num" value="50">
+            <label for="age2">50</label>  
+            <input type="radio" id="age3" name="num" value="100">
+            <label for="age3">100</label>
+            <input type="radio" id="age2" name="num" value="500">
+            <label for="age2">500</label>
+            <input type="radio" id="age2" name="num" value="1000">
+            <label for="age2">1000</label><br><br>
+            <br><button type="submit" name="add" class="btn btn-primary ml-3">Add</button>
+        </div>
+    </div></form>
+{% endblock %}
+{% block cohome2 %}
+    {% comment %} <form method="POST" action="{% url 'cashier2' %}">
+            {% csrf_token %} {% endcomment %}
+                <div class="row serch">
+                    <div class="col">
+                        <br><h3>search</h3>
+                    </div>
+                </div>
+                <form method="POST" action="{% url 'cashier2' %}">
+                    {% csrf_token %}
+                <div class="row memid">
+                    <div class="col-sm-8"><br>
+                        <input type="text" id="add_memberid" name="add_memberid" placeholder='member id' value="{{add_memberid.id}}"><br>
+                    </div>
+                    
+                    <div class="col-sm-4"><br><h3><button type="submit" class="btn btn-primary ml-3">search</button></h3></div></form>
+                </div>
+
+                <div class="row money_input">
+                    <div class="col">
+                        <label for="search_money_ad"></label>
+                        <input type="text" class="form-control ml-3" id="search_money_ad" 
+                            name="search_money_ad" value="{{search_money_ad}}" placeholder='search_money'>
+                    </div>
+                </div>
+
+                <div class="row logs">
+                    <div class="col">
+                    {% comment %} <input type="text" class="form-control ml-3" id="log_ad"
+                            name="log_ad" value="{{log_ad}}" placeholder='log_ad'> {% endcomment %}
+                        <br><div id="log" name="log" value="{{num_money}}">log</div><br>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
